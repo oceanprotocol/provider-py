@@ -315,6 +315,7 @@ class InputItemValidator:
         files_checksum = create_checksum(
             service.attributes["encryptedFiles"] + json.dumps(service.main["files"])
         )
+        print(f"files_checksum:{files_checksum}")
         if allowed_files_checksum and files_checksum != allowed_files_checksum:
             self.error = (
                 f"filesChecksum for algorithm with did {algo_ddo.did} does not match"
@@ -324,6 +325,7 @@ class InputItemValidator:
         container_section_checksum = create_checksum(
             json.dumps(service.main["algorithm"]["container"])
         )
+        print(f"container_section_checksum:{container_section_checksum}")
         if (
             allowed_container_checksum
             and container_section_checksum != allowed_container_checksum
